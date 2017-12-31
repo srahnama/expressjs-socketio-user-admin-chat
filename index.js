@@ -26,7 +26,7 @@ admin.on('connection', function(socket){
     });
     socket.on('chat message', function(msg){
         admin.emit('chat message', {"message" : msg.message, 'from' : socket.id});
-        client.to(msg.from).emit('chat message', {"message" : msg.message, 'from' : socket.id});
+        client.to(msg.to).emit('chat message', {"message" : msg.message, 'from' : socket.id});
         console.log(socket.id + ' message: ' + msg.message);
     });
     AllChats()
